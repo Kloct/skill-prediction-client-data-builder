@@ -4,7 +4,7 @@ const Abnormality = fs.readdirSync("./DC/Abnormality")
 /**
  * Abnormality
  */
-function generateAbnormality(){
+function generateAbnormality() {
     let abnormalities = {}
     for (let file of Abnormality) {
         const { Abnormal } = require(`./DC/Abnormality/${file}`)
@@ -45,7 +45,7 @@ function mergePassivity(path) {
     }
     return mergedPassive
 }
-function generateEP(){
+function generateEP() {
     let ep_pog = {}
     let ep = {}
     for (let perk of EpPerk.Perk) {
@@ -90,7 +90,7 @@ function checkConditionCategory(conditionCategory) {
 /**
  * passivity
  */
-function generatePassivity(){
+function generatePassivity() {
     let passivity = {}
     for (let passive of Passivity) {
         if (parseInt(passive.conditionCategory) != 0 && parseInt(passive.conditionCategory) != NaN) {
@@ -107,13 +107,13 @@ function generatePassivity(){
     //Item Passivities
     const RandomEquipmentPassivity = require('./DC/RandomEquipmentPassivity.json')
 
-    for (let e of RandomEquipmentPassivity.Group){
-        if (e.Passive){
-            for (let passive of e.Passive){
-                if(passive.subPassive!=undefined)
+    for (let e of RandomEquipmentPassivity.Group) {
+        if (e.Passive) {
+            for (let passive of e.Passive) {
+                if (passive.subPassive != undefined)
                     subPassives[passive.id] = passive.subPassive.split(",")
             }
-        } else if (e.method&&e.value.split(",").length==1&&e.prob.split(",").length==1){
+        } else if (e.method && e.value.split(",").length == 1 && e.prob.split(",").length == 1) {
             passivity[e.id] = {
                 type: e.type,
                 method: e.method,
@@ -130,7 +130,7 @@ function generatePassivity(){
 /**
  * polishing
  */
-function generatePolishing(){
+function generatePolishing() {
     const { SkillPolishingEffect } = require("./DC/SkillPolishingEffectList.json")
 
     let polishing = {}
@@ -147,7 +147,7 @@ function generatePolishing(){
 /**
  * noctan
  */
-function generateNoctan(){
+function generateNoctan() {
     const ClassIDs = [
         "warrior",
         "lancer",
